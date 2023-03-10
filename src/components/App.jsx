@@ -33,9 +33,9 @@ export class App extends React.Component {
 
   async fetchImages() {
     try {
+      this.setState({ loading: true });
       const { request, page } = this.state;
       const data = await searchImages(request, page);
-      this.setState({ loading: true });
       this.setState(({ images }) => ({
         images: [...images, ...data.hits]
       }));
